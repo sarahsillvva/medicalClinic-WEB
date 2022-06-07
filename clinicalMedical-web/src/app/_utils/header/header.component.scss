@@ -1,0 +1,55 @@
+/*==================GERAL===============*/
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap");
+
+$primary-color: radial-gradient(
+  circle at 21.75% 98.94%,
+  #536b6d 0,
+  #35595d 25%,
+  #00434b 50%,
+  #002e3b 75%,
+  #001f2f 100%
+);
+$sencond-color: white;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+/*==========Toolbar===================*/
+.mat-toolbar {
+  background-image: $primary-color;
+  height: 12rem;
+  width: 100%;
+  box-shadow: 2px;
+  box-shadow: 10px 0px 20px #00434b;
+  display: flex;
+  justify-content: space-between;
+}
+.mat-toolbar span {
+  color: $sencond-color;
+  font-family: "Fredoka One", cursive;
+  font-size: 26px;
+  margin-left: 5rem;
+}
+
+.mat-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 5rem;
+  font-family: "Manrope", sans-serif;
+}
+
+.mat-list-item {
+  color: #cad2d3;
+}
+
+.mat-list-item:hover {
+  color: #e0e3eb;
+  box-shadow: 1px 1px 1px 1px #536b6d;
+  border-radius: 3rem;
+  transform: scale(1);
+}
+
+/*================Menu=============*/
