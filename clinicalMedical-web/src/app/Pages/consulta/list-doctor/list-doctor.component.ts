@@ -23,11 +23,12 @@ export class ListDoctorComponent implements OnInit {
   //TABLE
   dataSource = new MatTableDataSource<Doctor>()
   displayedColumns: string[]  = ['name','crm','especialition','address','acoes'];
+  displayedButtontable: string [] = ['adicionar'];
 	@ViewChild(MatSort)
   matSort: MatSort = new MatSort;
 
-  //array list for DOCTOR
-  doctor = new Doctor;
+  //array list
+  doctor: Doctor = new Doctor;
   doctors: Doctor[]=[];
   constructor(
     private doctorService: DoctorService,
@@ -39,7 +40,6 @@ export class ListDoctorComponent implements OnInit {
 
   
     lister(){
-      console.log(this.doctor);
       this.doctorService.listerdoctor().subscribe(
           response =>{
             this.doctors = response.body
@@ -61,12 +61,12 @@ export class ListDoctorComponent implements OnInit {
 	abrirModalCadastrar(isCadastrar: boolean, idDoctor?: number) {
 		let dialogRef;
 		let doctor = this.doctors.find(s => s.id == idDoctor)
-
 		if (isCadastrar) {
 			dialogRef = this.dialog.open(ModalRegisterEditDoctor)
 		} else {
+      console.log(doctor);
 			dialogRef = this.dialog.open(ModalRegisterEditDoctor, {
-				data: this.doctor
+				data: doctor
 			});
 		}
 		dialogRef.afterClosed().subscribe(result => { });

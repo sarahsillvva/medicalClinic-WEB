@@ -1,5 +1,6 @@
 table {
   width: 100%;
+  justify-content: center;
   box-shadow: gray;
 }
 
@@ -13,4 +14,13 @@ table {
   margin-left: 2rem;
   margin-right: 2rem;
   margin-top: 2rem;
+}
+
+.btAdicionar {
+  color: #00434b;
+}
+
+.btAdicionar:hover {
+  color: white;
+  background-color: #00434b;
 }

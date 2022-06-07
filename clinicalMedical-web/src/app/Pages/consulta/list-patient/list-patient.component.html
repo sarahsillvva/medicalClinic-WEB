@@ -1,6 +1,22 @@
 <app-header></app-header>
 
 <div class="container">
+    <table mat-table class="button">
+        <ng-container matColumnDef="adicionar">
+            <th class="colum" mat-header-cell *matHeaderCellDef>
+                <button fxFlex="grow" (click)="abrirModalCadastrar(true)" mat-raised-button
+                    class="btAdicionar">Adicionar
+                    novo Paciente</button>
+            </th>
+            <td mat-cell *matCellDef="let doctor"></td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedButtontable"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedButtontable;"></tr>
+    </table>
+</div>
+
+
+<div class="container">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Name Column -->
         <ng-container matColumnDef="name">
@@ -41,9 +57,9 @@
         <ng-container matColumnDef="acoes">
             <th class="colum" mat-header-cell *matHeaderCellDef> Ações </th>
             <td mat-cell *matCellDef="let patient">
-                <!-- <button mat-icon-button class="color-icon" (click)="abrirModalCadastrar(false, patient.id)">
+                <button mat-icon-button class="color-icon" (click)="abrirModalCadastrar(false, patient.id)">
                     <mat-icon>edit</mat-icon>
-                </button> -->
+                </button>
 
                 <button mat-icon-button color="warn" (click)="AbrirModalDeletar(patient.id)">
                     <mat-icon>delete</mat-icon>

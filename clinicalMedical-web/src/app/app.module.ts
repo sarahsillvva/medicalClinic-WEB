@@ -23,6 +23,11 @@ import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/fo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ModalDeletarPatient } from './Pages/modais/patient-modal/delete-patient-modal/modal-delete-patient';
+import { MatInputModule } from '@angular/material/input';
+import { ModalRegisterEditPatient } from './Pages/modais/patient-modal/edit-patient-modal/modal-register-edit-patient';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -34,8 +39,7 @@ import { ModalDeletarPatient } from './Pages/modais/patient-modal/delete-patient
     ModalDeletarDoctor,
     ModalRegisterEditDoctor,
     ModalDeletarPatient,
-
-
+    ModalRegisterEditPatient
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,10 @@ import { ModalDeletarPatient } from './Pages/modais/patient-modal/delete-patient
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
 
     
   ],

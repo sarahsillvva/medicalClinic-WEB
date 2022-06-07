@@ -1,7 +1,8 @@
 <div class="px-6 py-3 border-b" fxLayout="row" fxLayoutAlign="start center">
-  <!-- //<h2 class="title m-0" mat-dialog-tittle *ngIf="!doctor.id">Novo Serviço</h2> -->
-  <h2 class="title m-0" mat-dialog-tittle *ngIf="doctor.id">Alterar Serviço</h2>
+  <h2 class="title m-0" mat-dialog-tittle *ngIf="!doctor.id">Novo Médico</h2>
+  <h2 class="title m-0" mat-dialog-tittle *ngIf="doctor.id">Alterar Médico</h2>
 </div>
+
 <mat-dialog-content class="mat-typography">
   <div @fadeInUp fxFlex="auto" [formGroup]="form">
     <div class="px-6 py-4" fxLayout="column">
@@ -9,6 +10,7 @@
         <mat-label>Nome do medico</mat-label>
         <input [(ngModel)]="doctor.name" matInput type="string" formControlName="name" required>
       </mat-form-field>
+
 
       <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
         <mat-form-field fxFlex="grow">

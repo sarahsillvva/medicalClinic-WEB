@@ -7,6 +7,7 @@ import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { PatientService } from 'src/app/services/patient.service';
 import { Patient } from 'src/app/_models/patient';
 import { ModalDeletarPatient } from '../../modais/patient-modal/delete-patient-modal/modal-delete-patient';
+import { ModalRegisterEditPatient } from '../../modais/patient-modal/edit-patient-modal/modal-register-edit-patient';
 
 @Component({
   selector: 'app-list-patient',
@@ -22,6 +23,7 @@ export class ListPatientComponent implements OnInit {
   //for table
   dataSource = new MatTableDataSource<Patient>()
   displayedColumns: string[]  = ['name','cpf','dt_creation','dt_birth', 'phone','address','acoes'];
+  displayedButtontable: string[] = ['adicionar'];
 	@ViewChild(MatSort)
   matSort: MatSort = new MatSort;
   //array list for Patient
@@ -48,22 +50,20 @@ export class ListPatientComponent implements OnInit {
           console.log(error);
         })
   }
-  // abrirModalCadastrar(isCadastrar: boolean, id?: number){
-  //   let dialogRef;
-	// 	let patient = this.patients.find(s => s.id == id)
+  abrirModalCadastrar(isCadastrar: boolean, id?: number){
+    let dialogRef;
+		let patient = this.patients.find(s => s.id == id)
 
-	// 	if (isCadastrar) {
-	// 		dialogRef = this.dialog.open(ModalRegisterEditPatient)
-	// 	} else {
-	// 		dialogRef = this.dialog.open(ModalRegisterEditPatient, {
-	// 			data: this.patient
-	// 		});
-	// 	}
-	// 	dialogRef.afterClosed().subscribe(result => { });
-	// }
-
-  // }
-
+		if (isCadastrar) {
+			dialogRef = this.dialog.open(ModalRegisterEditPatient)
+		} else {
+			dialogRef = this.dialog.open(ModalRegisterEditPatient, {
+				data: patient
+			});
+		}
+		dialogRef.afterClosed().subscribe(result => { });
+	}
+  
   AbrirModalDeletar(id: Patient){
     const dialogRef = this.dialog.open(ModalDeletarPatient, {
 			data: id

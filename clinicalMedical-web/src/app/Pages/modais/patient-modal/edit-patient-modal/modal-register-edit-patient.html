@@ -1,0 +1,55 @@
+<div class="px-6 py-3 border-b" fxLayout="row" fxLayoutAlign="start center">
+  <h2 class="title m-0" mat-dialog-tittle *ngIf="!patient.id">Novo Paciente</h2>
+  <h2 class="title m-0" mat-dialog-tittle *ngIf="patient.id">Alterar Paciente</h2>
+</div>
+
+<mat-dialog-content class="mat-typography">
+  <div @fadeInUp fxFlex="auto" [formGroup]="form">
+    <div class="px-6 py-4" fxLayout="column">
+      <mat-form-field fxFlex="grow">
+        <mat-label>Nome do Paciente</mat-label>
+        <input [(ngModel)]="patient.name" matInput type="string" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field fxFlex="grow">
+        <mat-label>CPF</mat-label>
+        <input [(ngModel)]="patient.cpf" type="string" matInput placeholder="Ex. 1254587/sp" formControlName="cpf"
+          required>
+      </mat-form-field>
+
+
+
+      <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
+        <mat-form-field fxFlex="grow">
+          <mat-label>Data Criação</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="patient.dtCreation" matInput
+            formControlName="dtCreation" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex="grow">
+          <mat-label>Data Nascimento</mat-label>
+          <input matInput [matDatepicker]="picker" [(ngModel)]="patient.dtBirth" matInput formControlName="dtBirth">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <mat-form-field fxFlex="grow">
+        <mat-label>Endereço</mat-label>
+        <textarea [(ngModel)]="patient.address" matInput formControlName="address"></textarea>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="grow">
+        <mat-label>Phone</mat-label>
+        <input matInput [(ngModel)]="patient.phone" placeholder="(DD) 99999-9999" formControlName="phone" required>
+      </mat-form-field>
+
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions aling="end">
+  <button mat-button type="button" mat-dialog-close>Cancelar</button>
+  <button color="primary" mat-raised-button type="button" [mat-dialog-close]="true" [disabled]="form.invalid"
+    (click)="enviarpatient(patient)">{{legendaBotao}}</button>
+</mat-dialog-actions>
