@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './_utils/header/header.component';
@@ -19,10 +19,10 @@ import {MatListModule} from '@angular/material/list';
 import { ModalDeletarDoctor } from './Pages/modais/doctor-modal/delete-doctor-modal/modal-delete-doctor';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalRegisterEditDoctor } from './Pages/modais/doctor-modal/edit-doctor-modal/modal-register-edit';
-
-
-
-
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ModalDeletarPatient } from './Pages/modais/patient-modal/delete-patient-modal/modal-delete-patient';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,11 @@ import { ModalRegisterEditDoctor } from './Pages/modais/doctor-modal/edit-doctor
     ConsultaComponent,
     ListDoctorComponent,
     ListPatientComponent,
-    ModalDeletarDoctor
+    ModalDeletarDoctor,
+    ModalRegisterEditDoctor,
+    ModalDeletarPatient,
+
+
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,11 @@ import { ModalRegisterEditDoctor } from './Pages/modais/doctor-modal/edit-doctor
     MatMenuModule,
     MatListModule,
     MatDialogModule,
-    ModalRegisterEditDoctor
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatSnackBarModule
 
     
   ],

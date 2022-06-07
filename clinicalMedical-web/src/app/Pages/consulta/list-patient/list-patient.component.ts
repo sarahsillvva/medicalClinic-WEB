@@ -1,18 +1,27 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
+import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 import { PatientService } from 'src/app/services/patient.service';
 import { Patient } from 'src/app/_models/patient';
+import { ModalDeletarPatient } from '../../modais/patient-modal/delete-patient-modal/modal-delete-patient';
 
 @Component({
   selector: 'app-list-patient',
   templateUrl: './list-patient.component.html',
-  styleUrls: ['./list-patient.component.scss']
+  styleUrls: ['./list-patient.component.scss'],
+  animations: [
+		stagger60ms,
+		fadeInUp400ms
+	]
+
 })
 export class ListPatientComponent implements OnInit {
   //for table
   dataSource = new MatTableDataSource<Patient>()
-  displayedColumns: string[]  = ['name','cpf','dt_creation','dt_birth', 'phone','address'];
+  displayedColumns: string[]  = ['name','cpf','dt_creation','dt_birth', 'phone','address','acoes'];
 	@ViewChild(MatSort)
   matSort: MatSort = new MatSort;
   //array list for Patient
@@ -20,7 +29,8 @@ export class ListPatientComponent implements OnInit {
   patients: Patient[]=[];
 
   constructor(
-    private patientService: PatientService  
+    private patientService: PatientService  ,
+    public dialog: MatDialog
   ) {
    }
 
@@ -38,6 +48,31 @@ export class ListPatientComponent implements OnInit {
           console.log(error);
         })
   }
+  // abrirModalCadastrar(isCadastrar: boolean, id?: number){
+  //   let dialogRef;
+	// 	let patient = this.patients.find(s => s.id == id)
+
+	// 	if (isCadastrar) {
+	// 		dialogRef = this.dialog.open(ModalRegisterEditPatient)
+	// 	} else {
+	// 		dialogRef = this.dialog.open(ModalRegisterEditPatient, {
+	// 			data: this.patient
+	// 		});
+	// 	}
+	// 	dialogRef.afterClosed().subscribe(result => { });
+	// }
+
+  // }
+
+  AbrirModalDeletar(id: Patient){
+    const dialogRef = this.dialog.open(ModalDeletarPatient, {
+			data: id
+		});
+		dialogRef.afterClosed().subscribe(result => {
+		});
+  }
+
+
 
 
 }

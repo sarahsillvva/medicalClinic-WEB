@@ -6,11 +6,17 @@ import { Doctor } from 'src/app/_models/doctor';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalDeletarDoctor } from '../../modais/doctor-modal/delete-doctor-modal/modal-delete-doctor';
 import { ModalRegisterEditDoctor } from '../../modais/doctor-modal/edit-doctor-modal/modal-register-edit';
+import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
+import { stagger60ms } from 'src/@vex/animations/stagger.animation';
 
 @Component({
   selector: 'app-list-doctor',
   templateUrl: './list-doctor.component.html',
-  styleUrls: ['./list-doctor.component.scss']
+  styleUrls: ['./list-doctor.component.scss'],
+  animations: [
+		stagger60ms,
+		fadeInUp400ms
+	]
 })
 export class ListDoctorComponent implements OnInit {
   
@@ -44,9 +50,9 @@ export class ListDoctorComponent implements OnInit {
     
   }
 
-  AbrirModalDeletar(doctorID: any) {
+  AbrirModalDeletar(id: Doctor) {
 		const dialogRef = this.dialog.open(ModalDeletarDoctor, {
-			data: doctorID
+			data: id
 		});
 		dialogRef.afterClosed().subscribe(result => {
 		});

@@ -1,5 +1,16 @@
 table {
   width: 100%;
-  justify-content: center;
   box-shadow: gray;
+}
+
+.color-icon {
+  color: gray;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
 }

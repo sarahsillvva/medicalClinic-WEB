@@ -1,0 +1,24 @@
+<div class="body-2 p-6 bg-primary text-primary-contrast">
+  <p>HOJE</p>
+  <div class="display-1">{{ nomeDia }}</div>
+  <div class="display-1">{{ dataDeHoje }}</div>
+</div>
+
+<mat-divider></mat-divider>
+
+<mat-nav-list>
+  <h3 matSubheader>Agendamentos do dia</h3>
+  <div *ngIf="agendamentosDoDia.length">
+    <a mat-list-item *ngFor="let agendamento of agendamentosDoDia" (click)="mudarRotaAgendamento(agendamento.id)">
+      <h4 matLine>{{agendamento.nomeServico}}</h4>
+      <p matLine>{{agendamento.dtAtendimento | date:'hh:MM'}}</p>
+    </a>
+  </div>
+  <a mat-list-item>
+    <h4 *ngIf="!agendamentosDoDia.length" matLine>Ainda não possui agendamentos</h4>
+  </a>
+  
+
+
+</mat-nav-list>
+
