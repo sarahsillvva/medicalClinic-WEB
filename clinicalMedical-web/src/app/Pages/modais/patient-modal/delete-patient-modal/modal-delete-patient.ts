@@ -23,6 +23,10 @@ export class ModalDeletarPatient {
 		this.patientService.deletePatient(this.id).subscribe(response => {
 			EventEmitterService.get('searchId').emit();
 			this.snackbar.open(MessagesSnackBar.DELETAR_PATIENT_SUCESSO, 'Fechar', { duration: 4000 })
+			setTimeout(function() {
+				document.location.reload(); 
+			}, 3000);
+			
 		}, (error) => {
 			console.log(error);
 			this.snackbar.open(MessagesSnackBar.DELETAR_PATIENT_ERRO, 'Fechar', { duration: 4000 })

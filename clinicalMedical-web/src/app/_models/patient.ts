@@ -3,7 +3,7 @@ export class Patient{
     name!: string;
     cpf!: string;
     dtCreation!: Date;
-    dtBirth!: Date;
+    dtBirth!: string;
     phone!: string;
     address!: string;
 

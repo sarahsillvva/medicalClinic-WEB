@@ -8,6 +8,7 @@ import { ModalDeletarDoctor } from '../../modais/doctor-modal/delete-doctor-moda
 import { ModalRegisterEditDoctor } from '../../modais/doctor-modal/edit-doctor-modal/modal-register-edit';
 import { fadeInUp400ms } from 'src/@vex/animations/fade-in-up.animation';
 import { stagger60ms } from 'src/@vex/animations/stagger.animation';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-list-doctor',
@@ -22,7 +23,7 @@ export class ListDoctorComponent implements OnInit {
   
   //TABLE
   dataSource = new MatTableDataSource<Doctor>()
-  displayedColumns: string[]  = ['name','crm','especialition','address','acoes'];
+  displayedColumns: string[]  = ['id','name','crm','especialition','address','phone','acoes'];
   displayedButtontable: string [] = ['adicionar'];
 	@ViewChild(MatSort)
   matSort: MatSort = new MatSort;
@@ -32,7 +33,10 @@ export class ListDoctorComponent implements OnInit {
   doctors: Doctor[]=[];
   constructor(
     private doctorService: DoctorService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private dateAdapter: DateAdapter<any>,) {
+      this.dateAdapter.setLocale('pt');
+     }
 
   ngOnInit(): void {
     this.lister();
@@ -48,6 +52,15 @@ export class ListDoctorComponent implements OnInit {
             console.log(error);
           })
     
+  }
+  searchById(id: number){
+    this.doctorService.searchId('id').subscribe(
+      response =>{
+        this.doctors = response.body
+        this.dataSource = new MatTableDataSource<Doctor>(this.doctors)
+      },(error)=>{
+        console.log(error);
+      })
   }
 
   AbrirModalDeletar(id: Doctor) {

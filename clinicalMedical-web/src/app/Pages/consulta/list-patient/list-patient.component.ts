@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { DateAdapter } from '@angular/material/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -32,8 +33,10 @@ export class ListPatientComponent implements OnInit {
 
   constructor(
     private patientService: PatientService  ,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private dateAdapter: DateAdapter<any>,
   ) {
+    this.dateAdapter.setLocale('pt');
    }
 
   ngOnInit(): void {
@@ -41,7 +44,8 @@ export class ListPatientComponent implements OnInit {
   }
 
   lister(){
-    console.log(this.patient);
+    
+    
     this.patientService.listerPatient().subscribe(
         response =>{
           this.patients = response.body

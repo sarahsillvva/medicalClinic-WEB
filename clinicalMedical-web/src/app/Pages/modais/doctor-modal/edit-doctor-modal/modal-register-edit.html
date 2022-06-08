@@ -10,20 +10,23 @@
         <mat-label>Nome do medico</mat-label>
         <input [(ngModel)]="doctor.name" matInput type="string" formControlName="name" required>
       </mat-form-field>
-
+      <mat-form-field fxFlex="grow">
+        <mat-label>CRM</mat-label>
+        <input [(ngModel)]="doctor.crm" type="string" matInput placeholder="Ex. 1254587/sp" formControlName="crm"
+          required>
+      </mat-form-field>
 
       <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="16px" fxLayoutGap.lt-sm="0">
-        <mat-form-field fxFlex="grow">
-          <mat-label>CRM</mat-label>
-          <input [(ngModel)]="doctor.crm" type="string" matInput placeholder="Ex. 1254587/sp" formControlName="crm"
-            required>
-        </mat-form-field>
-
         <mat-form-field fxFlex="grow">
           <mat-label>Especialização</mat-label>
           <input [(ngModel)]="doctor.especialition" matInput formControlName="especialition" required>
         </mat-form-field>
+        <mat-form-field fxFlex="grow">
+          <mat-label>Telefone</mat-label>
+          <textarea [(ngModel)]="doctor.phone" matInput formControlName="phone"></textarea>
+        </mat-form-field>
       </div>
+
 
       <mat-form-field fxFlex="grow">
         <mat-label>Endereço</mat-label>

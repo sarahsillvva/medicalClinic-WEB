@@ -22,7 +22,11 @@ export class ModalDeletarDoctor {
 	delete() {
 		this.doctorService.deletedoctor(this.id).subscribe(response => {
 			EventEmitterService.get('searchId').emit();
-			this.snackbar.open(MessagesSnackBar.DELETAR_DOCTOR_SUCESSO, 'Fechar', { duration: 4000 })
+			this.snackbar.open(MessagesSnackBar.DELETAR_DOCTOR_SUCESSO, 'Fechar', { duration: 2000 })
+			setTimeout(function() {
+				document.location.reload(); 
+			}, 3000);
+			
 		}, (error) => {
 			console.log(error);
 			this.snackbar.open(MessagesSnackBar.DELETAR_DOCTOR_ERRO, 'Fechar', { duration: 4000 })

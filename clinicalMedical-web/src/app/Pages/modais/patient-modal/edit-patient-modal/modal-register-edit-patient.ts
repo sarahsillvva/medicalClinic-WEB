@@ -54,7 +54,11 @@ export class ModalRegisterEditPatient implements OnInit {
 	cadastrar(patient: Patient) {
 		this.patientService.registerPatient(patient).subscribe(response => {
 			EventEmitterService.get('searchId').emit();
-			this.snackbar.open(MessagesSnackBar.CADASTRO_SUCESSO, 'Fechar', { duration: 4000 })
+			this.snackbar.open(MessagesSnackBar.CADASTRO_SUCESSO, 'Fechar', { duration: 2000 })
+			setTimeout(function() {
+				document.location.reload(); 
+			}, 3000);
+			
 		}, (error) => {
 			console.log(error);
 			this.snackbar.open(MessagesSnackBar.CADASTRO_ERRO, 'Fechar', { duration: 4000 })

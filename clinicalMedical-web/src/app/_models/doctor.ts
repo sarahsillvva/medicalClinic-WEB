@@ -5,7 +5,6 @@ export class Doctor{
     name!: string;
     crm!: string;
     especialition!: string;
-    dtBirth!: Date;
     phone!: string;
     address!: string;
     patient!: Patient;

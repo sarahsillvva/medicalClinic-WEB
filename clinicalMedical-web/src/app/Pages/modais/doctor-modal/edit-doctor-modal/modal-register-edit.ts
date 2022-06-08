@@ -41,6 +41,8 @@ export class ModalRegisterEditDoctor implements OnInit {
 			crm: ['', Validators.required],
 			especialition: ['', Validators.required],
 			address: ['', Validators.required],
+			phone: ['', Validators.required],
+			
 		});
 	}
 
@@ -52,7 +54,11 @@ export class ModalRegisterEditDoctor implements OnInit {
 	cadastrar(doctor: Doctor) {
 		this.doctorService.registerdoctor(doctor).subscribe(response => {
 			EventEmitterService.get('searchId').emit();
-			this.snackbar.open(MessagesSnackBar.CADASTRO_SUCESSO, 'Fechar', { duration: 4000 })
+			this.snackbar.open(MessagesSnackBar.CADASTRO_SUCESSO, 'Fechar', { duration: 2000 })
+			setTimeout(function() {
+				document.location.reload(); 
+			}, 3000);
+			
 		}, (error) => {
 			console.log(error);
 			this.snackbar.open(MessagesSnackBar.CADASTRO_ERRO, 'Fechar', { duration: 4000 })
